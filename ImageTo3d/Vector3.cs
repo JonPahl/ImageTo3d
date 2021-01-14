@@ -8,14 +8,11 @@ namespace ImageTo3d
         public float Y;
         public float Z;
 
-        public override string ToString()
-        {
-            return String.Format("({0}, {1}, {2})", X, Y, Z);
-        }
+        public override string ToString() => String.Format("({0}, {1}, {2})", X, Y, Z);
 
         public string ToSTLFormat()
         {
-            return String.Format("{0} {1} {2}", X, Y, Z);
+            return string.Format("{0} {1} {2}", X, Y, Z);
         }
 
         public Vector3(float x, float y, float z)
@@ -47,55 +44,67 @@ namespace ImageTo3d
 
         public static Vector3 Min(Vector3 a, Vector3 b)
         {
-            Vector3 v = new Vector3();
-            v.X = a.X < b.X ? a.X : b.X;
-            v.Y = a.Y < b.Y ? a.Y : b.Y;
-            v.Z = a.Z < b.Z ? a.Z : b.Z;
+            Vector3 v = new Vector3
+            {
+                X = a.X < b.X ? a.X : b.X,
+                Y = a.Y < b.Y ? a.Y : b.Y,
+                Z = a.Z < b.Z ? a.Z : b.Z
+            };
             return v;
         }
 
         public static Vector3 Max(Vector3 a, Vector3 b)
         {
-            Vector3 v = new Vector3();
-            v.X = a.X > b.X ? a.X : b.X;
-            v.Y = a.Y > b.Y ? a.Y : b.Y;
-            v.Z = a.Z > b.Z ? a.Z : b.Z;
+            Vector3 v = new Vector3
+            {
+                X = a.X > b.X ? a.X : b.X,
+                Y = a.Y > b.Y ? a.Y : b.Y,
+                Z = a.Z > b.Z ? a.Z : b.Z
+            };
             return v;
         }
 
         public static Vector3 operator /(Vector3 a, double d)
         {
-            Vector3 v = new Vector3();
-            v.X = a.X / (float)d;
-            v.Y = a.Y / (float)d;
-            v.Z = a.Z / (float)d;
+            Vector3 v = new Vector3
+            {
+                X = a.X / (float)d,
+                Y = a.Y / (float)d,
+                Z = a.Z / (float)d
+            };
             return v;
         }
 
         public static Vector3 operator +(Vector3 a, Vector3 b)
         {
-            Vector3 v = new Vector3();
-            v.X = a.X + b.X;
-            v.Y = a.Y + b.Y;
-            v.Z = a.Z + b.Z;
+            Vector3 v = new Vector3
+            {
+                X = a.X + b.X,
+                Y = a.Y + b.Y,
+                Z = a.Z + b.Z
+            };
             return v;
         }
 
         public static Vector3 operator -(Vector3 a, Vector3 b)
         {
-            Vector3 v = new Vector3();
-            v.X = a.X - b.X;
-            v.Y = a.Y - b.Y;
-            v.Z = a.Z - b.Z;
+            Vector3 v = new Vector3
+            {
+                X = a.X - b.X,
+                Y = a.Y - b.Y,
+                Z = a.Z - b.Z
+            };
             return v;
         }
 
         public static Vector3 Cross(Vector3 a, Vector3 b)
         {
-            Vector3 v = new Vector3();
-            v.X = a.Y * b.Z - a.Z * b.Y; 
-            v.Y = a.Z * b.X - a.X * b.Z;
-            v.Z = a.X * b.Y - a.Y * b.X;
+            Vector3 v = new Vector3
+            {
+                X = a.Y * b.Z - a.Z * b.Y,
+                Y = a.Z * b.X - a.X * b.Z,
+                Z = a.X * b.Y - a.Y * b.X
+            };
             return v;
         }
 
@@ -104,13 +113,7 @@ namespace ImageTo3d
             return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
         }
 
-        public float Length
-        {
-            get
-            {
-                return (float)Math.Sqrt(Dot(this, this));
-            }
-        }
+        public float Length => (float)Math.Sqrt(Dot(this, this));
 
         public Vector3 Unitize()
         {
